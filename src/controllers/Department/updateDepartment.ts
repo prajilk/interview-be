@@ -6,6 +6,7 @@ async function updateDepartment(req: Request, res: Response): Promise<void> {
     try {
         const { name, description } = req.body;
         const { id } = req.params;
+        const file = req.file;
         
         const department = await db.department.update({
             where: {
@@ -13,7 +14,9 @@ async function updateDepartment(req: Request, res: Response): Promise<void> {
             },
             data: {
                 name: name,
-                description: description
+                description: description,
+                // @ts-ignore
+                image: `uploads/${file.filename}`
             }
         })
         res.json({ message: "success", data: department });

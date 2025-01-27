@@ -1,6 +1,11 @@
 import express, { Request, Response } from 'express';
 import adminRoute from './routes/AdminRoutes';
 import departmentRoute from './routes/DepartmentRoutes';
+import departmentHeadRoute from "./routes/DepartmentHeadRoutes";
+import employeeRoute from "./routes/EmployeeRoutes";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 app.use(express.json());
@@ -12,6 +17,8 @@ app.get('/', async (req: Request, res: Response) => {
 
 app.use("/admin", adminRoute)
 app.use("/department", departmentRoute)
+app.use("/department-head", departmentHeadRoute)
+app.use("/employee", employeeRoute)
 
 // Create new user
 // app.post('/users', async (req: Request, res: Response) => {

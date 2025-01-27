@@ -3,19 +3,23 @@ import { db } from "../../lib/prisma";
 import { serverError } from "../../lib/utils";
 import fs from "fs";
 
-async function createDepartment(req: Request, res: Response): Promise<void> {
+async function createDepartmentHead(req: Request, res: Response): Promise<void> {
     try {
-        const { name, description } = req.body;
+        const { name, employeeNumber, age, department, description } = req.body;
         const file = req.file;
         
-        const department = await db.department.create({
+        // @ts-ignore
+        const departmentHead = await db.departmentHead.create({
             data: {
                 name: name,
                 description: description,
+                employeeNumber,
+                age: Number(age),
+                departmentId: Number(department),
                 image: `uploads/${file?.filename}`
             }
         })
-        res.json({ message: "success", data: department });
+        res.json({ message: "success", data: departmentHead });
         return;
     } catch(error:any) {
         fs.unlinkSync(`public/uploads/${req.file?.filename}`);
@@ -23,4 +27,4 @@ async function createDepartment(req: Request, res: Response): Promise<void> {
     }
 }
 
-export { createDepartment };
+export { createDepartmentHead };

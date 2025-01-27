@@ -11,6 +11,6 @@ const router = express.Router();
 router.get('/', verifyToken, getDepartment);
 router.post('/', upload.single("file"), createDepartment);
 router.delete('/:id', verifyToken, deleteDepartment);
-router.put('/:id', verifyToken, updateDepartment);
+router.put('/:id', upload.single("file"), updateDepartment);
 
 export default router;

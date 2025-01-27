@@ -18,4 +18,29 @@ model department {
   name          String      
   image         String      
   description   String
+  departmentHead departmentHead[]
+  employee      employee[]
+}
+model departmentHead {
+  id             Int         @id @default(autoincrement())
+  name           String      
+  image          String      
+  description    String
+  employeeNumber String
+  age            Int
+  departmentId   Int
+  department     department  @relation(fields: [departmentId], references: [id])
+  employee employee[]
+}
+model employee {
+  id             Int         @id @default(autoincrement())
+  name           String      
+  image          String      
+  description    String
+  employeeNumber String
+  age            Int
+  departmentId   Int
+  department     department  @relation(fields: [departmentId], references: [id])
+  reportToId     Int
+  reportTo       departmentHead    @relation(fields: [reportToId], references: [id])
 }
