@@ -7,14 +7,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model user {
-  id     Int         @id @default(autoincrement())
-  name   String      @db.VarChar(99)
-  email  String      @db.VarChar(99)
-  status user_status
+model admin {
+  id         Int         @id @default(autoincrement())
+  username   String      @db.VarChar(99) @unique
+  password   String
 }
 
-enum user_status {
-  active
-  inactive
+model department {
+  id            Int         @id @default(autoincrement())
+  name          String      
+  image         String      
+  description   String
 }

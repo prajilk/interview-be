@@ -9,15 +9,21 @@
     "build": "tsc -p ."
   },
   "devDependencies": {
+    "@prisma/client": "^6.2.1",
+    "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.8",
+    "@types/multer": "^1.4.12",
     "@types/node": "^22.10.10",
     "nodemon": "^3.1.9",
-    "prisma": "^6.0.0",
+    "prisma": "^6.2.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
   },
   "dependencies": {
-    "@prisma/client": "^6.0.0",
-    "express": "^4.21.0"
+    "bcrypt": "^5.1.1",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1"
   }
 }
